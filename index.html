@@ -2534,6 +2534,110 @@
     }
   }
 </style>
+
+<style>
+  .analysis-cycle-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .analysis-cycle {
+    min-width: 0;
+    border: 1px solid var(--bd);
+    border-left: 4px solid var(--ac);
+    border-radius: 16px;
+    background: var(--bg2);
+    overflow: hidden;
+  }
+
+  .analysis-cycle[open] {
+    border-color: var(--ac);
+  }
+
+  .analysis-cycle > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .analysis-cycle > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .analysis-cycle > summary::after {
+    content: "+";
+    flex-shrink: 0;
+    font-size: 26px;
+    color: var(--ac);
+  }
+
+  .analysis-cycle[open] > summary::after {
+    content: "−";
+  }
+
+  .analysis-cycle-label {
+    display: block;
+    color: var(--ac);
+    font: 500 11px "JetBrains Mono", monospace;
+    letter-spacing: 0.08em;
+    margin-bottom: 7px;
+  }
+
+  .analysis-cycle-title {
+    display: block;
+    font-family: Syne, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .analysis-cycle-meta {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--mu);
+  }
+
+  .analysis-cycle-body {
+    max-height: min(65svh, 600px);
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+    padding: 0 20px 20px;
+    border-top: 1px solid var(--bd);
+    scrollbar-width: thin;
+    scrollbar-color: var(--ac) transparent;
+  }
+
+  .analysis-cycle-body:focus-visible {
+    outline: 2px solid var(--ac);
+    outline-offset: -3px;
+  }
+
+  .analysis-cycle-body .analysis-item:first-child {
+    border-top: 0;
+    padding-top: 20px;
+  }
+
+  /* Gunakan satu area scroll pada panel siklus. */
+  .analysis-cycle-body .text-scroll {
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  @media (max-width: 700px) {
+    .analysis-cycle > summary {
+      padding: 16px;
+    }
+
+    .analysis-cycle-body {
+      padding: 0 16px 16px;
+    }
+  }
+</style>
   </head>
   <body data-page="topik3">
     <a class="skip" href="#main-content">Lewati navigasi</a>
@@ -2833,14 +2937,19 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
           },
           {
             "id": 4,
-            "topic": "Keamanan Jaringan dan Etika Penggunaan Internet",
+            "topic": "Keamanan Jaringan: Ancaman, Risiko, dan Pengamanan Dasar",
             "className": "X-6",
             "date": "2026-10-15",
-            "duration": "",
-            "model": "",
-            "purpose": "",
-            "finding": "",
-            "improvement": ""
+            "duration": "2 JP (2 × 45 menit)",
+            "model": "Problem Based Learning (PBL)",
+            "purpose": [
+              "Melalui pengamatan kasus jaringan laboratorium komputer dan diskusi pemantik, peserta didik mampu mengidentifikasi ancaman dan risiko dengan menemukan minimal dua permasalahan keamanan berdasarkan bukti kasus.",
+              "Melalui penjelasan interaktif dan diskusi kelompok, peserta didik mampu menjelaskan prinsip Confidentiality, Integrity, Availability serta menyebutkan minimal tiga cara pengamanan jaringan kabel dan nirkabel beserta fungsinya secara tepat.",
+              "Melalui simulasi Network Security Mission, peserta didik mampu menganalisis kasus dengan alur masalah → bukti → risiko → solusi → alasan, menghubungkan masalah dengan risiko dan penyebab, serta menulis alasan solusi minimal tingkat 2 pada rubrik alasan.",
+              "Melalui diskusi hasil misi dan Exit Ticket, peserta didik mampu menyimpulkan pentingnya keamanan jaringan dengan menyebutkan minimal dua contoh penerapan di rumah atau sekolah beserta alasannya."
+            ],
+            "finding": "Telaah rancangan: Siklus 4 melanjutkan konsep konektivitas pada Siklus 3 menuju penalaran tentang keamanan. Kasus koneksi tidak stabil, perangkat tidak dikenal, dan password yang tersebar digunakan untuk membedakan gejala, bukti, risiko, dan tindakan. Network Security Mission menyediakan Detect, Analyze, dan Secure, sedangkan laporan PDF serta Exit Ticket direncanakan sebagai bukti asesmen. Skor aplikasi dibedakan secara eksplisit dari nilai akademik.\n\nAlokasi kegiatan berjumlah 80 menit dan modul telah menyertakan bahan bacaan serta rubrik. Namun, TP 10.5.6 meminta minimal tiga cara pengamanan, sedangkan pertanyaan ketiga Exit Ticket meminta dua. TP 10.5.8 meminta dua contoh penerapan, sedangkan pertanyaan keempat baru meminta satu. Kesesuaian pelaksanaan dan capaian peserta didik belum dapat disimpulkan dari modul saja.",
+            "improvement": "Menyelaraskan Exit Ticket dengan tujuan: meminta minimal tiga cara pengamanan beserta fungsi dan minimal dua contoh penerapan beserta alasan. Memastikan istilah bukti, ancaman, risiko, dan penyebab dibedakan dengan jelas; koneksi tidak stabil tidak langsung dianggap sebagai serangan tanpa bukti pendukung.\n\nMencatat kontribusi individual selama diskusi, memberikan umpan balik berdasarkan rubrik alasan, serta menambahkan pertanyaan transfer di luar tiga kasus aplikasi. Menyiapkan pencatatan jawaban cadangan jika perangkat atau koneksi terganggu. Keberhasilan diperiksa melalui laporan misi, alasan sebab-akibat, observasi, dan Exit Ticket, bukan skor gamifikasi saja."
           }
         ],
         "artifacts": [
@@ -2848,23 +2957,23 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "plan-1",
             "type": "plan",
             "cycle": 1,
-            "title": "Modul ajar / RPP lengkap · Siklus 1",
+            "title": "Modul ajar / RPP lengkap - Siklus 1 (Pengenalan Microsoft Word)",
             "description": "",
-            "url": "",
+            "url": "https://drive.google.com/file/d/1gxxaAYczoB_bqwUFjeMzg3C8hHXlfltb/view?usp=sharing",
             "cover": "",
             "photos": [],
             "analysis": {
-              "context": "",
-              "purpose": "",
-              "rationale": "",
-              "evidence": "",
-              "strengths": "",
-              "limitations": "",
-              "theory": "",
-              "theoryApplication": "",
-              "references": "",
-              "reflection": "",
-              "followUp": ""
+              "context": "Rancangan disusun untuk peserta didik kelas X dengan pengalaman menggunakan aplikasi pengolah kata yang beragam. Sebagian telah mengenal Microsoft Word secara otodidak, sedangkan sebagian lainnya masih membutuhkan demonstrasi dan petunjuk bertahap. Pembelajaran perlu menghubungkan pengenalan antarmuka dengan penggunaan fitur untuk menghasilkan dokumen yang bermakna.",
+              "purpose": "Pembelajaran menargetkan tiga kemampuan: menjelaskan minimal tiga kegunaan Microsoft Word, mengidentifikasi fungsi Ribbon, Tab, dan Quick Access Toolbar, serta membuat Kartu Perkenalan Digital yang disimpan dalam format .docx dan .pdf. Tujuan telah memuat aktivitas dan hasil yang dapat diperiksa, meskipun ukuran ketepatan serta tingkat kemandirian perlu diperjelas.",
+              "rationale": "Discovery Learning dipilih untuk memberi kesempatan menemukan fungsi fitur melalui eksplorasi terbimbing. Perbandingan dokumen rapi dan kurang rapi membangun kebutuhan untuk mempelajari pengaturan dokumen. Kartu Perkenalan Digital dipilih karena dekat dengan identitas peserta didik dan memberi ruang kreativitas, sekaligus melatih keterampilan yang dapat digunakan untuk tugas sekolah dan dokumen profesional.",
+              "evidence": "Bukti rancangan terdapat pada bagian B tentang kesiapan peserta didik, bagian C tujuan pembelajaran, bagian E kerangka pembelajaran, bagian F kegiatan, serta bagian G dan H tentang asesmen dan perangkat pendukung. Modul mencantumkan Word Explorer Challenge, praktik pembuatan kartu, pemeriksaan hasil, dan rubrik produk. Bukti penerapan serta ketercapaian tujuan perlu ditautkan melalui LKPD, berkas peserta didik, observasi, dan video.",
+              "strengths": "Rancangan memiliki hubungan yang jelas antara eksplorasi fitur dan penerapannya pada produk. Alur kegiatan bergerak dari pengamatan menuju praktik, pemeriksaan, dan kesimpulan. Rubrik mencakup kelengkapan isi, kerapian, pemanfaatan fitur, kreativitas, dan penyimpanan dokumen. Refleksi diri juga disediakan agar peserta didik mengenali bagian yang mudah dan sulit.",
+              "limitations": "Bagian CP umum dan label bab belum selaras dengan fokus pengolah kata karena masih memuat algoritma dan Sistem Komputer. Rubrik produk belum secara langsung menilai kemampuan menjelaskan tiga kegunaan Word serta fungsi bagian antarmuka. Uraian gotong royong menyebut eksplorasi kelompok, sedangkan tujuan dan langkah kegiatan menekankan kerja mandiri. Alternatif Microsoft Word dan Google Dokumen juga memerlukan penyesuaian petunjuk karena antarmukanya berbeda.",
+              "theory": "Constructive alignment digunakan untuk memeriksa hubungan tujuan, aktivitas, dan asesmen. Gagasan belajar melalui penemuan digunakan untuk menelaah kesempatan peserta didik mengolah informasi dan menemukan hubungan. Dalam rancangan ini, eksplorasi tetap disertai arahan, demonstrasi, dan konfirmasi guru.",
+              "theoryApplication": "Tujuan menghasilkan dokumen telah didukung praktik dan rubrik produk. Namun, tujuan menjelaskan kegunaan serta fungsi antarmuka memerlukan pertanyaan atau tugas tersendiri. Eksplorasi baru mendukung penemuan apabila peserta didik menjelaskan hasil temuannya, bukan hanya mengikuti urutan klik. Karena itu, LKPD perlu meminta nama fitur, fungsi, dan contoh penggunaannya.",
+              "references": "PPL PPG Informatika. (2026). Modul Ajar: Pengenalan dan Antarmuka Microsoft Word.\n\nBiggs, J. (1996). Enhancing teaching through constructive alignment. Higher Education, 32, 347–364. https://doi.org/10.1007/BF00138871\n\nBruner, J. S. (1961). The Act of Discovery. Harvard Educational Review, 31, 21–32.",
+              "reflection": "Saya menyadari bahwa produk yang menarik belum cukup membuktikan seluruh tujuan pembelajaran. Saya perlu merancang pemeriksaan yang membedakan pemahaman fungsi fitur, keterampilan menggunakannya, dan kemandirian bekerja. Konsistensi antara CP, tujuan, kegiatan, aplikasi, serta rubrik juga perlu diperiksa sebelum perangkat digunakan.",
+              "followUp": "Meninjau keselarasan CP dan label bab; menambahkan pertanyaan tentang tiga kegunaan Word serta identifikasi fungsi antarmuka; memperjelas kerja mandiri dan bantuan teman; serta menyediakan petunjuk sesuai aplikasi. Kemandirian dicatat berdasarkan jenis bantuan yang diperlukan. Perbaikan diperiksa melalui jawaban konsep, LKPD, berkas .docx dan .pdf, serta catatan pendampingan."
             },
             "moments": []
           },
@@ -3088,23 +3197,23 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "plan-2",
             "type": "plan",
             "cycle": 2,
-            "title": "Modul ajar / RPP lengkap · Siklus 2",
+            "title": "Modul ajar / RPP lengkap - Siklus 2 (Mekanisme Kerja Komputer dan Simulasi IPO)",
             "description": "",
-            "url": "",
+            "url": "https://drive.google.com/file/d/1zwdYyf94iikq0X8pBnXXmHEVG_5HJNXg/view?usp=sharing",
             "cover": "",
             "photos": [],
             "analysis": {
-              "context": "",
-              "purpose": "",
-              "rationale": "",
-              "evidence": "",
-              "strengths": "",
-              "limitations": "",
-              "theory": "",
-              "theoryApplication": "",
-              "references": "",
-              "reflection": "",
-              "followUp": ""
+              "context": "Peserta didik telah mempelajari komponen komputer dan konsep dasar IPO, tetapi masih memerlukan penguatan dalam menjelaskan hubungan antarkomponen. Rancangan juga merespons kebutuhan mengembangkan kemandirian ketika menghadapi tugas yang berbeda dari contoh, melalui kegiatan mencoba, mencari informasi, bertanya, dan mengklarifikasi pemahaman.",
+              "purpose": "Rancangan menargetkan penjelasan mekanisme kerja komputer, pengelompokan komponen dengan ketepatan minimal 80%, penjelasan hubungan proses dan output, analisis gangguan, pemilihan komponen workstation, serta perkembangan kemandirian. Tujuan mencakup pengetahuan, penerapan, dan proses belajar, tetapi beberapa kriteria seperti logis, tepat, dan semakin mandiri perlu dijabarkan menjadi indikator yang dapat diamati.",
+              "rationale": "Reciprocal Teaching diadaptasi untuk mengarahkan peserta didik mengungkap prediksi, mengajukan pertanyaan, melakukan klarifikasi, dan merangkum pemahaman. Kasus dokumen yang belum disimpan serta video yang gambarnya tidak tampil dipilih karena dekat dengan pengalaman pengguna komputer. Simulasi membantu menampilkan hubungan komponen yang sulit diamati secara langsung.",
+              "evidence": "Bagian C memuat enam tujuan, bagian E menjelaskan penggunaan Reciprocal Teaching dan IPO Explorer, sedangkan bagian F memuat prediksi, materi, simulasi, analisis, Questioning, Clarifying, Summarizing, dan Reflection. Bagian G menghubungkan asesmen dengan aktivitas website dan tujuh aspek kemandirian. Bukti pelaksanaan perlu dilengkapi jawaban peserta didik, hasil simulasi, pertanyaan, klarifikasi, rangkuman, serta observasi.",
+              "strengths": "Rancangan menyediakan kesempatan mengungkap pemahaman awal sebelum mempelajari materi. Aktivitas tidak berhenti pada pengelompokan komponen, tetapi berlanjut pada penjelasan hubungan dan analisis masalah. Forum pertanyaan serta klarifikasi memberi ruang belajar antarteman. Tujuh aspek kemandirian membuat pengembangan proses belajar memperoleh perhatian selain ketepatan hasil.",
+              "limitations": "Cakupan enam tujuan dan banyak aktivitas cukup padat untuk 80 menit. Alokasi yang tertulis telah berjumlah 78 menit sebelum waktu tersendiri untuk Summarizing dan Reflection. Instrumen hasil kerja disebutkan, tetapi rubrik penskoran belum ditampilkan. Refleksi diri belum cukup sebagai satu-satunya bukti kemandirian. Rancangan juga belum merinci alternatif kegiatan apabila website, perangkat, atau koneksi mengalami gangguan.",
+              "theory": "Constructive alignment digunakan untuk memeriksa kecocokan tujuan dengan bukti penilaian. Reciprocal Teaching menekankan predicting, questioning, clarifying, dan summarizing melalui dialog terbimbing. Model tersebut awalnya dikembangkan untuk pemahaman bacaan; dalam modul ini strateginya diadaptasi untuk mempelajari konsep dan pengalaman simulasi komputer.",
+              "theoryApplication": "Prediksi dapat digunakan untuk membandingkan pemahaman sebelum dan sesudah pembelajaran. Pertanyaan dan klarifikasi perlu meminta penjelasan berbasis sumber, bukan sekadar jawaban singkat. Ketepatan simulasi minimal 80% perlu disertai alasan agar menunjukkan pemahaman. Tujuan kemandirian perlu diperiksa melalui refleksi, catatan bantuan guru, dan perilaku selama aktivitas.",
+              "references": "Ramadhan, F. F., dan Puspitasari, R. W. (2026). Modul Ajar: Mekanisme Kerja Komputer dan Simulasi IPO.\n\nBiggs, J. (1996). Enhancing teaching through constructive alignment. Higher Education, 32, 347–364. https://doi.org/10.1007/BF00138871\n\nPalincsar, A. S., dan Brown, A. L. (1984). Reciprocal Teaching of Comprehension-Fostering and Comprehension-Monitoring Activities. Cognition and Instruction, 1(2), 117–175. https://doi.org/10.1207/s1532690xci0102_1",
+              "reflection": "Saya perlu mengutamakan kedalaman pemahaman ketika memilih jumlah aktivitas. Penyelesaian seluruh halaman website belum otomatis menunjukkan tercapainya tujuan. Perencanaan yang lebih kuat perlu memberi waktu untuk menjelaskan alasan, memperbaiki miskonsepsi, dan merangkum, serta menyediakan bukti perkembangan kemandirian yang dapat dibandingkan.",
+              "followUp": "Menentukan aktivitas inti dan pengayaan, lalu memberikan waktu eksplisit untuk rangkuman serta refleksi. Menyusun rubrik penjelasan konsep, analisis kasus, dan hasil workstation; menambahkan catatan jenis bantuan; serta menyiapkan alternatif berupa diagram dan kartu komponen. Keberhasilan perbaikan diperiksa dari tercakupnya setiap tujuan dalam asesmen dan tersedianya bukti pemahaman individual."
             },
             "moments": []
           },
@@ -3112,9 +3221,9 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "material-2",
             "type": "material",
             "cycle": 2,
-            "title": "Bahan ajar / materi pembelajaran · Siklus 2",
+            "title": "Bahan ajar / materi pembelajaran - Siklus 2 (Mekanisme Kerja Komputer dan Simulasi IPO)",
             "description": "",
-            "url": "",
+            "url": "https://drive.google.com/file/d/1zwdYyf94iikq0X8pBnXXmHEVG_5HJNXg/view?usp=sharing",
             "cover": "",
             "photos": [],
             "analysis": {
@@ -3138,7 +3247,7 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "cycle": 2,
             "title": "Media pembelajaran · Siklus 2",
             "description": "",
-            "url": "",
+            "url": "https://drive.google.com/file/d/1zwdYyf94iikq0X8pBnXXmHEVG_5HJNXg/view?usp=sharing",
             "cover": "",
             "photos": [],
             "analysis": {
@@ -3328,23 +3437,23 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "plan-3",
             "type": "plan",
             "cycle": 3,
-            "title": "Modul ajar / RPP lengkap · Siklus 3",
+            "title": "Modul ajar / RPP lengkap - Siklus 3 (Konsep Dasar Jaringan Komputer dan Konektivitas)",
             "description": "",
             "url": "",
             "cover": "",
             "photos": [],
             "analysis": {
-              "context": "",
-              "purpose": "",
-              "rationale": "",
-              "evidence": "",
-              "strengths": "",
-              "limitations": "",
-              "theory": "",
-              "theoryApplication": "",
-              "references": "",
-              "reflection": "",
-              "followUp": ""
+              "context": "Peserta didik telah menggunakan internet dan Wi-Fi, tetapi pengalaman sebagai pengguna belum tentu disertai pemahaman perangkat serta hubungan koneksinya. Laboratorium komputer dipilih sebagai sumber belajar agar konsep jaringan dapat dikaitkan dengan objek dan jalur koneksi yang diamati. Pengalaman awal yang beragam memerlukan petunjuk eksplorasi yang jelas.",
+              "purpose": "Pembelajaran menargetkan kemampuan menjelaskan konsep dan manfaat jaringan, mengidentifikasi contoh cakupan jaringan dengan ketepatan minimal empat dari lima, menyebutkan minimal dua perbedaan kabel dan nirkabel, serta menggambarkan hubungan minimal tiga komponen jaringan. Ukuran tersebut membantu pemeriksaan capaian, tetapi perlu dipetakan secara eksplisit ke pertanyaan, LKPD, dan rubrik.",
+              "rationale": "Discovery Learning digunakan melalui Network Detective agar peserta didik menyusun dugaan berdasarkan ciri perangkat sebelum memperoleh konfirmasi istilah. Tiga kartu misi memusatkan pengamatan pada perangkat berkabel, konektivitas nirkabel, dan hubungan menuju internet. Diskusi serta diagram digunakan untuk mengubah temuan terpisah menjadi pemahaman mengenai suatu jaringan.",
+              "evidence": "Bagian C memuat empat tujuan dengan kriteria capaian. Bagian E menjelaskan eksplorasi terbimbing, pembelajaran kelompok, dan penggunaan laboratorium. Bagian F merinci enam tahap Discovery Learning, termasuk identifikasi perangkat A, B, dan C serta verifikasi switch, access point, dan router. Bagian G memuat refleksi, observasi, LKPD, dan rubrik hasil investigasi. Bukti pelaksanaan perlu dilengkapi hasil pengamatan, diagram, dan jawaban individual.",
+              "strengths": "Rancangan menggunakan lingkungan yang dekat dengan pengalaman peserta didik. Identitas perangkat tidak langsung diberikan sehingga tersedia kesempatan mengamati dan menyampaikan dugaan. Kartu misi membantu membatasi fokus penyelidikan. Verifikasi ditempatkan setelah pengolahan temuan agar guru dapat menghubungkan penjelasan konsep dengan hasil investigasi peserta didik.",
+              "limitations": "Pengamatan laboratorium terutama memperlihatkan jaringan lokal sehingga belum cukup untuk membedakan seluruh cakupan jaringan tanpa contoh tambahan. Internet perlu dijelaskan sebagai jaringan dari berbagai jaringan, bukan sekadar kategori luas wilayah yang setara dengan PAN, LAN, MAN, dan WAN. Rubrik investigasi disebutkan, tetapi indikator rinci belum ditampilkan. Hasil kelompok juga belum memastikan penguasaan setiap anggota.",
+              "theory": "Constructive alignment digunakan untuk menelaah keterhubungan tujuan, pengalaman belajar, dan asesmen. Gagasan penemuan digunakan untuk memeriksa bagaimana peserta didik memperoleh hubungan dari hasil pengamatan. Dalam rancangan ini, penemuan dibimbing melalui kartu misi, pertanyaan pengarah, dan verifikasi konsep.",
+              "theoryApplication": "Pengamatan memberi data awal, diskusi membantu menghubungkan ciri dengan fungsi, dan verifikasi memeriksa ketepatan dugaan. Namun, tujuan menjelaskan cakupan jaringan membutuhkan contoh yang melampaui lingkungan laboratorium. Tujuan menggambar konektivitas juga memerlukan tugas diagram yang jelas dan rubrik hubungan antarkomponen, bukan hanya penamaan perangkat.",
+              "references": "PPL PPG Informatika. (2026). Modul Ajar: Konsep Dasar Jaringan Komputer dan Konektivitas.\n\nBiggs, J. (1996). Enhancing teaching through constructive alignment. Higher Education, 32, 347–364. https://doi.org/10.1007/BF00138871\n\nBruner, J. S. (1961). The Act of Discovery. Harvard Educational Review, 31, 21–32.",
+              "reflection": "Saya perlu memastikan bahwa eksplorasi menghasilkan penjelasan hubungan jaringan, bukan hanya kegiatan menemukan benda. Perencanaan harus memuat pertanyaan yang meminta alasan, kesempatan kontribusi setiap anggota, serta pemeriksaan individual. Saya juga perlu menyediakan contoh yang cukup agar peserta didik dapat menerapkan konsep pada jaringan di luar laboratorium.",
+              "followUp": "Menambahkan contoh pembanding cakupan jaringan; memperjelas tugas diagram minimal tiga komponen; dan menyusun rubrik ketepatan perangkat, fungsi, hubungan koneksi, serta alasan. Membagi dan menggilir peran kelompok. Menambahkan exit ticket individual untuk memeriksa jenis jaringan, dua perbedaan kabel dan nirkabel, serta konektivitas lokal dan internet sebelum memasuki materi keamanan jaringan."
             },
             "moments": []
           },
@@ -3352,7 +3461,7 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "material-3",
             "type": "material",
             "cycle": 3,
-            "title": "Bahan ajar / materi pembelajaran · Siklus 3",
+            "title": "Bahan ajar / materi pembelajaran - Siklus 3 (Konsep Dasar Jaringan Komputer dan Konektivitas)",
             "description": "",
             "url": "",
             "cover": "",
@@ -3376,7 +3485,7 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "media-3",
             "type": "media",
             "cycle": 3,
-            "title": "Media pembelajaran · Siklus 3",
+            "title": "Media pembelajaran - Siklus 3 (Konsep Dasar Jaringan Komputer dan Konektivitas)",
             "description": "",
             "url": "",
             "cover": "",
@@ -3579,23 +3688,23 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "plan-4",
             "type": "plan",
             "cycle": 4,
-            "title": "Modul ajar / RPP lengkap · Siklus 4",
-            "description": "",
+            "title": "Modul Ajar Siklus 4 — Keamanan Jaringan",
+            "description": "Rancangan PBL 80 menit dengan TP 10.5.5–10.5.8, kegiatan Network Security Mission, bahan bacaan, Exit Ticket, dan rubrik. Tautan berkas publik belum ditambahkan.",
             "url": "",
             "cover": "",
             "photos": [],
             "analysis": {
-              "context": "",
-              "purpose": "",
-              "rationale": "",
-              "evidence": "",
-              "strengths": "",
-              "limitations": "",
-              "theory": "",
-              "theoryApplication": "",
-              "references": "",
-              "reflection": "",
-              "followUp": ""
+              "context": "Rancangan melanjutkan pembelajaran konektivitas pada Siklus 3. Peserta didik telah mengenal perangkat jaringan dan Wi-Fi, tetapi belum tentu membedakan jaringan yang dapat digunakan dengan jaringan yang aman. Perencanaan merespons kebutuhan bernalar dari bukti dan membangun tanggung jawab dalam menggunakan akses jaringan.",
+              "purpose": "Empat tujuan mencakup identifikasi minimal dua masalah berbasis bukti, penjelasan CIA dan minimal tiga cara pengamanan, analisis kasus dengan alasan minimal tingkat 2, serta dua contoh penerapan sehari-hari. Tujuan telah disertai kriteria yang dapat diperiksa, sehingga perlu dijaga konsistensinya dalam tugas dan rubrik.",
+              "rationale": "PBL dipilih untuk menjadikan kasus jaringan sekolah sebagai titik awal penyelidikan. Alur masalah → bukti → risiko → solusi → alasan memandu pengambilan keputusan. Simulasi membatasi praktik pada lingkungan pembelajaran, sementara diskusi dan presentasi memberi kesempatan membandingkan alasan serta menerima konfirmasi guru.",
+              "evidence": "Bukti rancangan: bagian C memuat TP 10.5.5–10.5.8; bagian F merinci lima tahap PBL; bagian G memetakan asesmen; Lampiran 1 berisi bahan bacaan; Lampiran 2 berisi Exit Ticket; Lampiran 3 berisi rubrik. Waktu 8 + 7 + 15 + 28 + 5 + 8 + 9 menit berjumlah 80 menit. Bukti pelaksanaan belum disertakan.",
+              "strengths": "Tujuan, kasus, simulasi, laporan, dan rubrik dirancang saling berhubungan. Rubrik alasan membedakan jawaban yang hanya menyebut tindakan dari jawaban yang menjelaskan risiko dan sebab-akibat. Modul menegaskan bahwa skor gamifikasi merupakan umpan balik, sedangkan penilaian akademik menggunakan rubrik dan Exit Ticket.",
+              "limitations": "Exit Ticket belum sepenuhnya mengukur tuntutan tujuan: soal ketiga meminta dua cara pengamanan, sedangkan TP 10.5.6 meminta tiga; soal keempat meminta satu contoh, sedangkan TP 10.5.8 meminta dua. Rubrik kategori Baik pada prinsip dan pengamanan juga baru meminta dua cara. Materi yang luas dalam 15 menit berpotensi mengurangi kesempatan memeriksa pemahaman. Aturan penyimpanan cadangan jawaban belum dirinci.",
+              "theory": "Constructive alignment menekankan keselarasan tujuan, aktivitas, dan asesmen. Kajian PBL memandang pembelajaran melalui pemecahan masalah yang difasilitasi, disertai identifikasi kebutuhan belajar, penerapan pengetahuan, dan refleksi. Prinsip ini digunakan sebagai lensa analisis rancangan, bukan jaminan keberhasilan pelaksanaan.",
+              "theoryApplication": "Masalah menjadi pemantik, penyelidikan menghasilkan pilihan serta alasan, dan pembahasan hasil digunakan untuk memeriksa penjelasan. Kesesuaian asesmen masih perlu diperbaiki pada jumlah cara pengamanan dan contoh penerapan. Karena kasus aplikasi memiliki pilihan terbatas, pertanyaan transfer diperlukan agar peserta didik juga menjelaskan keputusan untuk situasi baru.",
+              "references": "PPL PPG Informatika. (2026). Modul Ajar Keamanan Jaringan: Ancaman, Risiko, dan Pengamanan Dasar.\n\nBiggs, J. (1996). Enhancing teaching through constructive alignment. Higher Education, 32, 347–364. https://doi.org/10.1007/BF00138871\n\nHmelo-Silver, C. E. (2004). Problem-Based Learning: What and How Do Students Learn? Educational Psychology Review, 16, 235–266. https://doi.org/10.1023/B:EDPR.0000034022.16470.f3",
+              "reflection": "Saya perlu menjaga agar tuntutan dalam tujuan benar-benar muncul dalam pertanyaan dan rubrik. Kelengkapan perangkat belum cukup apabila bukti yang dikumpulkan tidak mencakup seluruh indikator. Waktu belajar juga perlu memberi ruang bagi alasan peserta didik, bukan hanya penuntasan tiga misi.",
+              "followUp": "Merevisi Exit Ticket dan batas capaian sesuai TP; menyediakan peta tujuan–tugas–rubrik; membatasi penjelasan awal pada konsep esensial; serta menyiapkan pencatatan jawaban cadangan. Perbaikan diperiksa dari tersedianya bukti individual untuk setiap tujuan, kualitas alasan, dan penyelesaian kegiatan dalam waktu yang tersedia."
             },
             "moments": []
           },
@@ -3603,23 +3712,23 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "material-4",
             "type": "material",
             "cycle": 4,
-            "title": "Bahan ajar / materi pembelajaran · Siklus 4",
-            "description": "",
+            "title": "Bahan Ajar Siklus 4 — Ancaman, Risiko, dan Pengamanan Dasar",
+            "description": "Lampiran 1 modul: objek yang dilindungi, CIA, ancaman dan risiko, malware, pengamanan dasar, perbandingan kabel/nirkabel, dan pembahasan kasus.",
             "url": "",
             "cover": "",
             "photos": [],
             "analysis": {
-              "context": "",
-              "purpose": "",
-              "rationale": "",
-              "evidence": "",
-              "strengths": "",
-              "limitations": "",
-              "theory": "",
-              "theoryApplication": "",
-              "references": "",
-              "reflection": "",
-              "followUp": ""
+              "context": "Peserta didik dekat dengan Wi-Fi dan password, tetapi istilah CIA, ancaman, risiko, enkripsi, serta malware dapat menjadi konsep baru. Materi perlu membantu mereka menafsirkan kasus secara tepat tanpa menganggap setiap gangguan jaringan sebagai bukti serangan.",
+              "purpose": "Bahan ajar mendukung pemahaman objek yang dilindungi, prinsip CIA, ancaman dan risiko, serta pengamanan dasar jaringan kabel dan nirkabel. Penguasaan diukur melalui hubungan masalah–bukti–risiko–solusi dan kemampuan menjelaskan fungsi tindakan pengamanan.",
+              "rationale": "Urutan dimulai dari masalah yang dekat dengan pengalaman, diikuti konsep, contoh ancaman, pilihan pengamanan, dan pembahasan kasus. Penyajian ini memberi kosakata untuk mengolah temuan sebelum peserta didik menentukan solusi dan menjelaskan alasannya.",
+              "evidence": "Lampiran 1 memuat pengertian keamanan jaringan, tabel CIA, ancaman dan risiko, lima jenis malware, pengamanan dasar, perbandingan kabel dan nirkabel, serta pembahasan tiga kasus Network Security Mission. Slide KEAMANAN_JARKOM.pdf disebutkan dalam modul, tetapi berkas slide belum diperiksa secara terpisah.",
+              "strengths": "Materi menghubungkan prinsip dengan contoh pelanggaran dan perlindungan. Perbandingan kabel serta nirkabel membantu melihat perbedaan titik akses. Pembahasan kasus menyertakan alasan sebab-akibat dan menegaskan pengamanan berlapis, sehingga jawaban tidak berhenti pada nama tindakan.",
+              "limitations": "Banyak istilah dikenalkan dalam waktu singkat. Gejala koneksi tidak stabil memerlukan penjelasan bahwa penyebabnya belum tentu serangan. Penyebab kasus yang telah ditetapkan aplikasi perlu dibedakan dari diagnosis jaringan nyata yang membutuhkan bukti tambahan. Perangkat resmi juga tidak otomatis bebas risiko hanya karena identitasnya dikenal.",
+              "theory": "Keselarasan pembelajaran menuntut materi menyediakan pengetahuan yang diperlukan untuk menunjukkan kemampuan dalam tujuan. Materi di sini dinilai dari fungsinya membantu menjelaskan hubungan, bukan sekadar banyaknya istilah yang dicakup.",
+              "theoryApplication": "Tabel konsep menjadi bekal untuk mengidentifikasi risiko, sementara contoh alasan membantu peserta didik menghubungkan tindakan dengan dampak. Untuk memeriksa transfer, contoh latihan perlu berbeda dari contoh pembahasan agar jawaban tidak hanya menyalin pola kasus yang sama.",
+              "references": "PPL PPG Informatika. (2026). Modul Ajar Keamanan Jaringan: Ancaman, Risiko, dan Pengamanan Dasar. Bagian C, E, F, dan Lampiran 1.\n\nBiggs, J. (1996). Enhancing teaching through constructive alignment. Higher Education, 32, 347–364. https://doi.org/10.1007/BF00138871",
+              "reflection": "Saya perlu memilih konsep esensial dan memperjelas perbedaan gejala, bukti, ancaman, risiko, serta penyebab. Saya juga perlu menunjukkan batas contoh sederhana agar peserta didik tidak menggeneralisasikan jawaban aplikasi pada semua situasi jaringan.",
+              "followUp": "Menambahkan glosarium singkat, diagram CIA, contoh dan bukan contoh masalah keamanan, serta kasus transfer. Pemahaman diperiksa melalui penjelasan peserta didik tentang risiko yang mungkin terjadi, bukti yang mendukung, dan informasi tambahan yang masih dibutuhkan."
             },
             "moments": []
           },
@@ -3627,23 +3736,23 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "media-4",
             "type": "media",
             "cycle": 4,
-            "title": "Media pembelajaran · Siklus 4",
-            "description": "",
-            "url": "",
+            "title": "Network Security Mission — Siklus 4",
+            "description": "Media yang dirujuk modul dengan alur Detect, Analyze, Secure, serta laporan akhir. Skor aplikasi merupakan umpan balik gamifikasi; nilai akademik menggunakan rubrik guru.",
+            "url": "https://network-security-mission.netlify.app/",
             "cover": "",
             "photos": [],
             "analysis": {
-              "context": "",
-              "purpose": "",
-              "rationale": "",
-              "evidence": "",
-              "strengths": "",
-              "limitations": "",
-              "theory": "",
-              "theoryApplication": "",
-              "references": "",
-              "reflection": "",
-              "followUp": ""
+              "context": "Konsep keamanan jaringan tidak selalu dapat diamati langsung. Media simulasi digunakan untuk menyediakan representasi kasus yang dapat dianalisis tanpa melakukan pengujian pada jaringan sekolah yang sebenarnya.",
+              "purpose": "Network Security Mission digunakan untuk mendeteksi komponen berisiko, menghubungkan masalah dengan risiko serta penyebab, dan memilih pengamanan beserta alasan. Laporan akhir direncanakan untuk menyimpan hasil analisis sebagai bahan penilaian guru.",
+              "rationale": "Alur Detect → Analyze → Secure membagi tugas menjadi langkah yang lebih terarah. Diagram, pilihan tindakan, umpan balik, dan laporan PDF dirancang membantu peserta didik memeriksa keputusan sebelum memaparkannya kepada teman.",
+              "evidence": "Modul mencantumkan https://network-security-mission.netlify.app/ dan menjelaskan Mission 01 Detect, Mission 02 Analyze, Mission 03 Secure, serta Final Report. Uraian fitur berasal dari modul; fungsi aplikasi, tampilan, aksesibilitas, dan ketepatan umpan balik belum diuji langsung dalam penelaahan ini.",
+              "strengths": "Potensi kekuatan media adalah pengelompokan proses analisis ke dalam misi dan penyediaan laporan untuk meninjau alasan. Skor dapat digunakan sebagai umpan balik belajar. Batas simulasi dinyatakan jelas dalam modul sehingga aktivitas tidak memerlukan perubahan pada jaringan nyata.",
+              "limitations": "Pelaksanaan bergantung pada perangkat, peramban, dan koneksi. Modul mengingatkan agar halaman tidak disegarkan sebelum PDF diunduh, sehingga keberlanjutan jawaban perlu diperhatikan. Jawaban benar setelah mencoba berulang belum cukup membuktikan pemahaman. Fitur skor atau deteksi alasan otomatis tidak boleh menggantikan penilaian guru.",
+              "theory": "Dalam rancangan PBL, media berfungsi membantu penyelidikan masalah dan pemeriksaan keputusan. Umpan balik direncanakan sebagai informasi untuk memperbaiki alasan; efektivitasnya perlu dilihat dari perubahan penjelasan peserta didik, bukan dari kenaikan skor semata.",
+              "theoryApplication": "Guru dapat meminta peserta didik menjelaskan alasan sebelum menerima umpan balik, lalu membandingkannya dengan jawaban yang diperbaiki. Laporan digunakan untuk menelusuri keputusan, sedangkan pertanyaan individual menguji apakah pemahaman dapat diterapkan pada kasus lain.",
+              "references": "PPL PPG Informatika. (2026). Modul Ajar Keamanan Jaringan: Ancaman, Risiko, dan Pengamanan Dasar. Bagian E, F, G, H, dan Lampiran 3. Media yang dirujuk modul: https://network-security-mission.netlify.app/",
+              "reflection": "Saya perlu membedakan daya tarik permainan dengan kualitas penalaran. Media baru mendukung pembelajaran apabila peserta didik menjelaskan hubungan tindakan dan risiko. Saya juga perlu memastikan jawaban dapat diamankan ketika akses atau perangkat bermasalah.",
+              "followUp": "Menguji alur misi, identitas pengguna, umpan balik, pengunduhan PDF, dan pergantian pengguna sebelum kelas. Menyiapkan lembar kasus cadangan, menyampaikan prosedur penyimpanan, serta memeriksa kualitas alasan melalui pembahasan bersama dan rubrik guru."
             },
             "moments": []
           },
@@ -3651,23 +3760,23 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "worksheet-4",
             "type": "worksheet",
             "cycle": 4,
-            "title": "Lembar kerja peserta didik · Siklus 4",
-            "description": "",
+            "title": "Tugas Misi dan Exit Ticket — Siklus 4",
+            "description": "Tugas investigasi dikerjakan melalui aplikasi. Lampiran 2 menyediakan empat pertanyaan Exit Ticket dan skala keyakinan. Tidak diklaim ada LKPD terpisah yang belum dilampirkan.",
             "url": "",
             "cover": "",
             "photos": [],
             "analysis": {
-              "context": "",
-              "purpose": "",
-              "rationale": "",
-              "evidence": "",
-              "strengths": "",
-              "limitations": "",
-              "theory": "",
-              "theoryApplication": "",
-              "references": "",
-              "reflection": "",
-              "followUp": ""
+              "context": "Kegiatan menggunakan misi digital sebagai tugas investigasi dan Exit Ticket sebagai refleksi individual. Keduanya perlu dibedakan dari tes hafalan agar peserta didik menunjukkan langkah analisis dan pemaknaan pengalaman.",
+              "purpose": "Tugas mengarahkan peserta didik menyusun hubungan masalah, bukti, risiko, solusi, dan alasan. Exit Ticket memeriksa hal baru yang dipahami, prinsip CIA, pengamanan kabel/nirkabel, dan penerapan kebiasaan keamanan.",
+              "rationale": "Misi menyediakan kerangka penyelidikan, sedangkan Exit Ticket memberi kesempatan menjawab dengan kalimat sendiri setelah diskusi. Skala keyakinan membantu peserta didik menyatakan kebutuhan bantuan, tetapi tidak digunakan sebagai nilai penguasaan konsep.",
+              "evidence": "Bagian F menjelaskan aktivitas dan keluaran setiap misi. Lampiran 2 menyediakan empat pertanyaan Exit Ticket serta skala keyakinan 1–4. Modul tidak melampirkan LKPD terpisah untuk misi; tugas utama dikerjakan di aplikasi dan menghasilkan laporan PDF.",
+              "strengths": "Pertanyaan tidak hanya meminta tindakan, tetapi juga fungsi dan alasan. Exit Ticket menyediakan bukti individual yang dapat melengkapi diskusi kelompok. Pola sebab-akibat membantu peserta didik menyusun penjelasan yang lebih jelas.",
+              "limitations": "Soal ketiga Exit Ticket meminta satu pengamanan nirkabel dan satu kabel, sedangkan TP meminta minimal tiga cara. Soal keempat meminta satu kebiasaan, sedangkan TP meminta dua contoh penerapan. Skala keyakinan hanya menunjukkan persepsi diri. Petunjuk juga perlu memperjelas bahwa diskusi boleh bersama, tetapi alasan dan laporan harus menunjukkan pemahaman masing-masing.",
+              "theory": "Keselarasan tujuan dan tugas menuntut jumlah serta kedalaman jawaban yang diminta sesuai indikator capaian. Refleksi digunakan untuk mengenali pemahaman dan kebutuhan tindak lanjut, bukan menggantikan bukti kemampuan.",
+              "theoryApplication": "Exit Ticket perlu meminta tiga pengamanan beserta fungsinya dan dua penerapan beserta alasan agar memenuhi TP. Jawaban kasus dapat dibandingkan dengan keyakinan diri untuk menemukan peserta didik yang masih membutuhkan penguatan atau pemeriksaan ulang.",
+              "references": "PPL PPG Informatika. (2026). Modul Ajar Keamanan Jaringan: Ancaman, Risiko, dan Pengamanan Dasar. Bagian C, F, dan Lampiran 2.\n\nBiggs, J. (1996). Enhancing teaching through constructive alignment. Higher Education, 32, 347–364. https://doi.org/10.1007/BF00138871",
+              "reflection": "Saya perlu memeriksa tuntutan pada setiap pertanyaan sebelum menggunakannya untuk menyimpulkan capaian. Refleksi individual akan lebih berguna apabila jawabannya benar-benar digunakan untuk menentukan penjelasan, latihan, atau pendampingan berikutnya.",
+              "followUp": "Merevisi jumlah jawaban sesuai TP, menyediakan ruang alasan yang cukup, serta menambahkan kolom bukti pada lembar cadangan misi. Mengelompokkan jawaban Exit Ticket menurut konsep yang perlu diperkuat dan memberi umpan balik pada pertemuan berikutnya."
             },
             "moments": []
           },
@@ -3675,23 +3784,23 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "assessment-4",
             "type": "assessment",
             "cycle": 4,
-            "title": "Instrumen dan rubrik penilaian · Siklus 4",
-            "description": "",
+            "title": "Instrumen dan Rubrik Penilaian — Siklus 4",
+            "description": "Lampiran 3: rubrik alasan tingkat 1–3, lima aspek investigasi/refleksi berskala 1–4, dan pedoman penggunaan laporan misi. Belum memuat hasil atau nilai peserta didik.",
             "url": "",
             "cover": "",
             "photos": [],
             "analysis": {
-              "context": "",
-              "purpose": "",
-              "rationale": "",
-              "evidence": "",
-              "strengths": "",
-              "limitations": "",
-              "theory": "",
-              "theoryApplication": "",
-              "references": "",
-              "reflection": "",
-              "followUp": ""
+              "context": "Asesmen perlu memeriksa penalaran keamanan dan tanggung jawab, bukan sekadar pilihan benar atau skor aplikasi. Bukti dikumpulkan selama penyelidikan dan setelah kegiatan agar hasil kelompok dapat dilengkapi pemahaman individual.",
+              "purpose": "Instrumen menilai identifikasi masalah, analisis risiko serta penyebab, solusi dan alasan, pemahaman CIA/pengamanan, serta kesimpulan penerapan sehari-hari. TP 10.5.7 menetapkan alasan minimal tingkat 2, sedangkan rubrik analitik menyediakan kategori 1–4.",
+              "rationale": "Observasi dan pertanyaan digunakan sebagai asesmen untuk pembelajaran; Exit Ticket memuat refleksi diri sekaligus jawaban konsep yang dapat dianalisis guru; laporan misi serta rubrik menjadi bukti penilaian hasil. Skor gamifikasi dipisahkan dari nilai akademik.",
+              "evidence": "Bagian G memetakan assessment as, for, dan of learning. Lampiran 3A memuat rubrik alasan tingkat 1–3. Lampiran 3B memuat lima aspek dengan skor 1–4. Lampiran 3C memetakan Threats, Risks, Causes, Solutions, dan Alasan pada laporan ke aspek penilaian. Belum ada laporan siswa atau rekap nilai yang disertakan.",
+              "strengths": "Rubrik membedakan tindakan saja, tindakan beserta risiko, serta alasan sebab-akibat. Aspek investigasi ditautkan pada kode TP. Ketentuan bahwa Security Score bukan nilai akhir membantu guru menilai kualitas penjelasan, bukan sekadar keberhasilan menyelesaikan permainan.",
+              "limitations": "Kriteria pengamanan pada kategori Baik baru meminta dua cara, sedangkan TP meminta tiga. Exit Ticket belum mencakup jumlah jawaban yang diminta TP 10.5.6 dan 10.5.8. Bobot, konversi nilai akhir, serta perlakuan terhadap perbaikan setelah umpan balik belum dijelaskan. Aturan bantuan pada tugas berpasangan atau kelompok juga perlu dibuat jelas agar nilai individual dapat ditafsirkan.",
+              "theory": "Constructive alignment digunakan untuk memeriksa apakah indikator penilaian sesuai kemampuan yang ditargetkan. Bukti asesmen formatif digunakan untuk memilih umpan balik dan tindak lanjut, sedangkan rubrik digunakan untuk memperjelas kualitas jawaban.",
+              "theoryApplication": "Identifikasi dua masalah dan alasan tingkat 2 perlu dipetakan secara eksplisit ke batas capaian. Skor alasan 1–3 tidak dijumlahkan begitu saja dengan aspek 1–4 tanpa aturan. Kriteria, sumber bukti, bobot bila digunakan, dan perlakuan terhadap revisi jawaban perlu disampaikan sebelum tugas.",
+              "references": "PPL PPG Informatika. (2026). Modul Ajar Keamanan Jaringan: Ancaman, Risiko, dan Pengamanan Dasar. Bagian C, G, serta Lampiran 2 dan 3.\n\nBiggs, J. (1996). Enhancing teaching through constructive alignment. Higher Education, 32, 347–364. https://doi.org/10.1007/BF00138871",
+              "reflection": "Saya perlu menilai alasan secara konsisten dan membedakan kemampuan awal dari hasil perbaikan setelah umpan balik. Kelengkapan laporan belum otomatis menunjukkan penguasaan. Keputusan penilaian harus dapat ditelusuri ke indikator dan bukti yang digunakan.",
+              "followUp": "Menyelaraskan rubrik dan Exit Ticket dengan TP; menentukan aturan penilaian serta bantuan; dan menyiapkan contoh jawaban tiap tingkat alasan. Menambahkan pemeriksaan individual serta mencatat versi jawaban sebelum/sesudah umpan balik. Hasil digunakan untuk penguatan CIA, pembedaan risiko/penyebab, atau latihan menyusun alasan."
             },
             "moments": []
           },
@@ -3699,23 +3808,23 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
             "id": "video-4",
             "type": "video",
             "cycle": 4,
-            "title": "Video praktik mengajar · Siklus 4",
-            "description": "",
+            "title": "Video Praktik Mengajar Siklus 4 — Keamanan Jaringan",
+            "description": "Rancangan pelaksanaan menggunakan PBL dan Network Security Mission. Tautan serta isi video Siklus 4 belum tersedia untuk ditinjau.",
             "url": "",
             "cover": "",
             "photos": [],
             "analysis": {
-              "context": "",
-              "purpose": "",
-              "rationale": "",
-              "evidence": "",
-              "strengths": "",
-              "limitations": "",
-              "theory": "",
-              "theoryApplication": "",
-              "references": "",
-              "reflection": "",
-              "followUp": ""
+              "context": "Video Siklus 4 direncanakan sebagai bukti pelaksanaan pembelajaran Keamanan Jaringan menggunakan PBL dan Network Security Mission. Tautan video Siklus 4 belum diberikan, sehingga analisis ini merupakan panduan telaah berdasarkan modul, bukan hasil pengamatan rekaman.",
+              "purpose": "Peninjauan diarahkan pada penyajian masalah, pengorganisasian diskusi, pertanyaan pengarah saat misi, pembahasan alasan, dan refleksi individual. Bukti yang dicari adalah hubungan antara keputusan guru dan penalaran peserta didik.",
+              "rationale": "Rekaman diperlukan untuk membandingkan rancangan PBL dengan praktik, termasuk kesempatan peserta didik menggunakan bukti, menjelaskan risiko, memilih pengamanan, dan memperbaiki alasan setelah umpan balik.",
+              "evidence": "Acuan: bagian F modul, Mission 01 Detect, Mission 02 Analyze, Mission 03 Secure, Final Report, presentasi, dan Exit Ticket. Video, penanda menit, serta respons peserta didik belum tersedia untuk diverifikasi.",
+              "strengths": "Potensi kekuatan rancangan ialah hubungan kasus kontekstual, penyelidikan bertahap, dan diskusi alasan. Kekuatan pelaksanaan perlu dibuktikan dari momen ketika peserta didik menjelaskan bukti atau memperbaiki pemahaman, bukan hanya menyelesaikan layar aplikasi.",
+              "limitations": "Belum tersedia rekaman untuk menilai kejelasan instruksi, pemerataan partisipasi, pengelolaan waktu, dan kualitas umpan balik. Keterbatasan tersebut tidak boleh disimpulkan sebagai kejadian kelas hanya dari rencana.",
+              "theory": "Dalam PBL yang dirancang pada modul, masalah menjadi titik awal penyelidikan dan guru memfasilitasi pengujian alasan. Analisis rekaman perlu memeriksa kualitas proses pemecahan masalah serta refleksi yang muncul.",
+              "theoryApplication": "Setiap momen nantinya ditelaah melalui peristiwa, keputusan guru, respons peserta didik, dan makna pedagogis. Periksa apakah guru meminta alasan dan bukti, membedakan gejala dengan serangan, serta menegaskan batas skor gamifikasi dan nilai akademik.",
+              "references": "PPL PPG Informatika. (2026). Modul Ajar Keamanan Jaringan: Ancaman, Risiko, dan Pengamanan Dasar. Bagian E, F, G, serta Lampiran 2 dan 3. Kajian PBL dirujuk pada analisis perencanaan Siklus 4.",
+              "reflection": "Saya perlu menggunakan video untuk menguji asumsi tentang pembelajaran, bukan hanya mendokumentasikan kegiatan. Refleksi pelaksanaan akan dilengkapi setelah rekaman dan hasil kerja diperiksa.",
+              "followUp": "Menambahkan tautan video yang benar dan penanda waktu terverifikasi; menautkan momen penting dengan laporan misi, Exit Ticket, serta catatan observasi. Refleksi dan perbaikan pelaksanaan disesuaikan dengan bukti tersebut."
             },
             "moments": []
           },
@@ -5052,6 +5161,52 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
           "</div>"
         );
       }
+
+      function analysisByCycle(list) {
+        const cycleIds = [...new Set(list.map((a) => a.cycle))]
+          .sort((a, b) => (a || 99) - (b || 99));
+
+        return (
+          '<div class="analysis-cycle-list">' +
+          cycleIds.map((cycleId) => {
+            const items = list.filter((a) => a.cycle === cycleId);
+            const cycle = DATA.cycles.find((c) => c.id === cycleId);
+
+            const label = cycleId
+              ? "SIKLUS " + cycleId
+              : "LINTAS SIKLUS";
+
+            const title = cycleId
+              ? cycle?.topic || "Materi belum diisi"
+              : "Kegiatan Nonmengajar";
+
+            return (
+              '<details class="analysis-cycle">' +
+                "<summary><span>" +
+                  '<span class="analysis-cycle-label">' +
+                    escapeHTML(label) +
+                  "</span>" +
+                  '<strong class="analysis-cycle-title">' +
+                    escapeHTML(title) +
+                  "</strong>" +
+                  '<small class="analysis-cycle-meta">' +
+                    items.length +
+                    " artefak · Klik untuk membuka analisis" +
+                  "</small>" +
+                "</span></summary>" +
+                '<div class="analysis-cycle-body" tabindex="0"' +
+                  ' role="region" aria-label="Analisis ' +
+                  escapeHTML(label) +
+                '">' +
+                  items.map(analysisBlock).join("") +
+                "</div>" +
+              "</details>"
+            );
+          }).join("") +
+          "</div>"
+        );
+      }
+
       function analyses(page) {
         const types =
           page === "topik3"
@@ -5113,7 +5268,7 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
                   escapeHTML(TYPES[type].label) +
                   '</summary><div class="analysis-items">' +
                   (list.length
-                    ? list.map(analysisBlock).join("")
+                    ? analysisByCycle(list)
                     : empty("Artefak untuk cakupan ini belum tersedia.")) +
                   "</div></details></div>"
                 );
@@ -6121,6 +6276,30 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
         },
         { passive: true },
       );
+
+      document.addEventListener("toggle", (e) => {
+        const opened = e.target;
+
+        if (
+          !(opened instanceof HTMLDetailsElement) ||
+          !opened.classList.contains("analysis-cycle") ||
+          !opened.open
+        ) {
+          return;
+        }
+
+        const siblings = opened.parentElement.children;
+
+        for (const other of siblings) {
+          if (
+            other !== opened &&
+            other.classList.contains("analysis-cycle")
+          ) {
+            other.open = false;
+          }
+        }
+      }, true);
+
       addEventListener("hashchange", route);
       route();
     </script>
@@ -6130,5 +6309,396 @@ Path relatif merujuk berkas yang disertakan saat hosting; pengunjung tidak mengu
         portofolio ini.
       </div></noscript
     >
+
+
+    <!--
+GALERI NONMENGAJAR — Faisal Fajar Ramadhan
+Tempel SELURUH isi file ini tepat sebelum tag penutup body pada HTML portofolio Anda.
+Letakkan setelah script utama; cukup pasang satu kali.
+19 foto menggunakan ID Drive yang Anda berikan. Tidak mengubah DATA/analisis.
+Foto Drive perlu dapat dilihat pengunjung tanpa login.
+-->
+<style id="ntg-styles">
+  .ntg { --ntg-radius: 24px; color: var(--tx); }
+  .ntg [hidden], .ntg-lightbox [hidden] { display: none !important; }
+  .ntg-intro { display: flex; justify-content: space-between; align-items: end; gap: 22px; margin: 6px 0 22px; }
+  .ntg-intro h3 { font-size: clamp(24px, 4vw, 38px); letter-spacing: -.035em; margin: 6px 0 12px; }
+  .ntg-intro h3 span { color: var(--ac); }
+  .ntg-intro p { max-width: 550px; font-size: 13px; color: var(--mu); }
+  .ntg-total { border: 1px solid var(--bd); border-radius: 22px 22px 8px 22px; padding: 13px 22px; background: var(--gl); flex-shrink: 0; }
+  .ntg-total b { display: block; font: 800 36px/1.2 Syne, sans-serif; color: var(--ac); }
+  .ntg-total span { font: 500 10px/1.7 "JetBrains Mono", monospace; color: var(--mu); }
+  .ntg-categories { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .ntg-category { border: 1px solid var(--bd); border-radius: 99px; background: var(--card); color: var(--mu); padding: 9px 15px; font-size: 12px; display: inline-flex; align-items: center; gap: 9px; }
+  .ntg-category small { display: inline-grid; place-items: center; min-width: 22px; height: 22px; border-radius: 50%; background: var(--gl); color: var(--ac); font-size: 10px; }
+  .ntg-category[aria-selected="true"] { background: linear-gradient(125deg, var(--ac), var(--ac2)); color: #06131e; border-color: transparent; font-weight: 800; }
+  .ntg-category[aria-selected="true"] small { color: #06131e; background: #ffffff50; }
+  .ntg-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding: 12px; border: 1px solid var(--bd); border-radius: 18px; background: var(--card); }
+  .ntg-search-label { margin: 0; flex: 1 1 210px; }
+  .ntg-search-label input { font-size: 12px; padding: 10px 12px; }
+  .ntg-tool { display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--bd); border-radius: 10px; padding: 9px 12px; background: var(--bg2); color: var(--tx); font-size: 12px; min-height: 40px; }
+  .ntg-tool:hover, .ntg-tool[aria-pressed="true"] { color: var(--ac); border-color: var(--ac); background: var(--gl); }
+  .ntg-counter { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px 15px; color: var(--mu); font-size: 11px; margin: 14px 0 18px; }
+  .ntg-mosaic { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: 145px; gap: 16px; }
+  .ntg-photo { position: relative; grid-column: span 2; grid-row: span 2; min-width: 0; overflow: hidden; border: 1px solid var(--bd); border-radius: var(--ntg-radius); background: linear-gradient(145deg, var(--gl), var(--bg2)); isolation: isolate; transition: border-color .25s, box-shadow .25s; }
+  .ntg-photo:nth-child(7n + 1) { grid-column: span 4; grid-row: span 3; border-radius: 46px 16px 46px 16px; }
+  .ntg-photo:nth-child(7n + 3) { border-radius: 60px 18px 18px 18px; }
+  .ntg-photo:nth-child(7n + 4) { grid-column: span 3; border-radius: 18px 18px 50px 18px; }
+  .ntg-photo:nth-child(7n + 5) { grid-column: span 3; border-radius: 18px 50px 18px 18px; }
+  .ntg-photo:nth-child(7n + 7) { grid-column: span 4; }
+  .ntg-photo:hover, .ntg-photo:focus-within { border-color: var(--ac); box-shadow: 0 12px 35px #0003; }
+  .ntg-photo-open { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; background: transparent; text-align: left; color: #fff; overflow: hidden; border-radius: inherit; }
+  .ntg-photo-open:focus-visible { outline-offset: -5px; }
+  .ntg-photo-image { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .55s; background: var(--bg2); }
+  .ntg-photo:hover .ntg-photo-image { transform: scale(1.045); }
+  .ntg-photo-open::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, #0003, transparent 30%, #0001 48%, #000d); pointer-events: none; }
+  .ntg-photo-label { position: absolute; z-index: 1; left: 20px; right: 20px; bottom: 18px; }
+  .ntg-photo-label small { display: block; font: 500 10px/1.8 "JetBrains Mono", monospace; opacity: .85; letter-spacing: .05em; }
+  .ntg-photo-label strong { display: block; font: 700 clamp(16px, 2.3vw, 23px)/1.35 Syne, sans-serif; margin: 4px 0; }
+  .ntg-photo-label em { font-size: 11px; font-style: normal; opacity: .8; }
+  .ntg-favorite { position: absolute; top: 13px; right: 13px; z-index: 2; width: 38px; height: 38px; border-radius: 50%; border: 1px solid #ffffff50; background: #05101a99; color: #fff; backdrop-filter: blur(10px); font-size: 21px; }
+  .ntg-favorite[aria-pressed="true"] { background: var(--ac); color: #06131e; border-color: var(--ac); }
+  .ntg-photo-index { position: absolute; top: 15px; left: 17px; z-index: 1; color: #fff; background: #05101a99; padding: 3px 8px; border: 1px solid #ffffff40; border-radius: 99px; font: 500 10px/1.7 "JetBrains Mono", monospace; pointer-events: none; }
+  .ntg-source { position: absolute; right: 14px; bottom: 14px; z-index: 2; width: 32px; height: 32px; display: grid; place-items: center; border: 1px solid #ffffff50; border-radius: 50%; background: #05101a99; color: #fff; }
+  .ntg-source:hover { color: #fff; background: #203a50; }
+  .ntg-photo.is-unavailable .ntg-photo-label { bottom: 70px; }
+  .ntg-load-message { position: absolute; bottom: 16px; left: 17px; right: 57px; z-index: 1; font-size: 11px; padding: 8px; border-radius: 8px; background: #05101acc; color: #fff; pointer-events: none; }
+  .ntg-mosaic[data-layout="rapi"] { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 270px; }
+  .ntg-mosaic[data-layout="rapi"] .ntg-photo { grid-column: span 1; grid-row: span 1; border-radius: 18px; }
+  .ntg-empty { padding: 34px 22px; border: 1px dashed var(--bd); border-radius: 20px; color: var(--mu); text-align: center; font-size: 13px; }
+  .ntg-help { font-size: 11px; color: var(--mu); margin-top: 18px; }
+  .ntg-lightbox { --ntg-zoom: 1; width: min(1250px, calc(100vw - 24px)); height: min(94dvh, 1000px); max-width: none; max-height: 96dvh; padding: 0; border: 1px solid var(--bd); border-radius: 22px; background: var(--bg2); color: var(--tx); overflow: hidden; box-shadow: 0 25px 100px #0009; }
+  .ntg-lightbox[open] { display: flex; flex-direction: column; }
+  .ntg-lightbox::backdrop { background: #020812e8; backdrop-filter: blur(12px); }
+  .ntg-lightbox:fullscreen { width: 100vw; height: 100dvh; max-height: none; border-radius: 0; }
+  .ntg-lightbox-header { display: flex; gap: 8px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--bd); flex-shrink: 0; flex-wrap: wrap; }
+  .ntg-lightbox-heading { margin-right: auto; min-width: 0; }
+  .ntg-lightbox-heading h2 { font-size: 16px; }
+  .ntg-lightbox-heading small { font-size: 10px; color: var(--mu); }
+  .ntg-lightbox-actions { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .ntg-lightbox-actions .ntg-tool { padding: 6px 10px; min-height: 35px; }
+  .ntg-stage-wrap { min-height: 0; flex: 1; position: relative; background: #020812; }
+  .ntg-stage { height: 100%; width: 100%; overflow: auto; overscroll-behavior: contain; position: relative; }
+  .ntg-full-image { display: block; width: calc(100% * var(--ntg-zoom)); height: calc(100% * var(--ntg-zoom)); max-width: none; object-fit: contain; cursor: zoom-in; }
+  .ntg-stage[data-zoomed="true"] .ntg-full-image { cursor: zoom-out; }
+  .ntg-fallback-frame { border: 0; display: block; width: 100%; height: 100%; background: #020812; }
+  .ntg-stage-status { position: absolute; inset: 0; pointer-events: none; display: grid; place-items: center; padding: 30px 60px; text-align: center; font-size: 13px; color: #d7e8f7; }
+  .ntg-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 42px; height: 48px; border: 1px solid #ffffff40; border-radius: 14px; background: #05101ac9; color: #fff; font-size: 24px; }
+  .ntg-nav[data-ntg-action="prev"] { left: 12px; }
+  .ntg-nav[data-ntg-action="next"] { right: 12px; }
+  .ntg-lightbox-caption { display: flex; justify-content: space-between; gap: 12px; padding: 10px 16px; font-size: 11px; color: var(--mu); border-top: 1px solid var(--bd); flex-wrap: wrap; flex-shrink: 0; }
+  .ntg-filmstrip { display: flex; gap: 7px; overflow-x: auto; padding: 10px 16px; border-top: 1px solid var(--bd); scrollbar-width: thin; flex-shrink: 0; }
+  .ntg-film-item { flex: 0 0 69px; height: 47px; padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; background: var(--gl); color: var(--tx); position: relative; }
+  .ntg-film-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ntg-film-item span { position: absolute; inset: auto 2px 2px auto; background: #000a; color: #fff; font-size: 9px; padding: 0 4px; border-radius: 4px; }
+  .ntg-film-item[aria-current="true"] { border-color: var(--ac); }
+  @media (max-width: 750px) {
+    .ntg-mosaic { grid-auto-rows: 105px; gap: 11px; }
+    .ntg-photo-label { left: 13px; right: 13px; bottom: 12px; }
+    .ntg-photo-label strong { font-size: 16px; }
+    .ntg-photo-label em { display: none; }
+    .ntg-mosaic[data-layout="rapi"] { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 230px; }
+    .ntg-intro { align-items: start; }
+    .ntg-total { padding: 10px 15px; }
+    .ntg-total b { font-size: 30px; }
+  }
+  @media (max-width: 520px) {
+    .ntg-mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 115px; gap: 10px; }
+    .ntg-mosaic .ntg-photo { grid-column: span 1; grid-row: span 2; border-radius: 20px; }
+    .ntg-mosaic .ntg-photo:nth-child(5n + 1) { grid-column: span 2; grid-row: span 3; border-radius: 32px 14px 32px 14px; }
+    .ntg-mosaic[data-layout="rapi"] { grid-auto-rows: 210px; }
+    .ntg-mosaic[data-layout="rapi"] .ntg-photo { grid-column: span 1; grid-row: span 1; border-radius: 15px; }
+    .ntg-intro h3 { font-size: 25px; }
+    .ntg-intro p { font-size: 12px; }
+    .ntg-total { display: none; }
+    .ntg-category { padding: 7px 10px; font-size: 11px; gap: 6px; }
+    .ntg-tools { gap: 6px; padding: 9px; }
+    .ntg-search-label { flex-basis: 100%; }
+    .ntg-tool { font-size: 11px; padding: 8px 10px; }
+    .ntg-favorite { width: 32px; height: 32px; top: 10px; right: 10px; font-size: 18px; }
+    .ntg-photo-label strong { font-size: 14px; }
+    .ntg-photo-label small { font-size: 9px; }
+    .ntg-photo-index { left: 11px; top: 12px; }
+    .ntg-lightbox { height: 95dvh; max-height: 96dvh; width: calc(100vw - 12px); border-radius: 16px; }
+    .ntg-lightbox-header { padding: 10px; }
+    .ntg-lightbox-heading { flex: 1 1 calc(100% - 55px); }
+    .ntg-lightbox-heading h2 { font-size: 14px; }
+    .ntg-lightbox-actions { width: 100%; }
+    .ntg-nav { width: 34px; height: 42px; border-radius: 10px; }
+    .ntg-nav[data-ntg-action="prev"] { left: 6px; }
+    .ntg-nav[data-ntg-action="next"] { right: 6px; }
+    .ntg-film-item { flex-basis: 54px; height: 40px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .ntg *, .ntg *::after { transition: none !important; animation: none !important; } }
+  @media print {
+    .ntg-categories, .ntg-tools, .ntg-favorite, .ntg-help, .ntg-lightbox { display: none !important; }
+    .ntg-mosaic, .ntg-mosaic[data-layout="rapi"] { display: grid; grid-template-columns: repeat(2, 1fr); grid-auto-rows: 65mm; gap: 4mm; }
+    .ntg-mosaic .ntg-photo, .ntg-mosaic[data-layout="rapi"] .ntg-photo { grid-column: span 1; grid-row: span 1; border-radius: 12px; break-inside: avoid; }
+    .ntg-photo-open::after { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  }
+</style>
+<script id="ntg-script">
+(() => {
+  "use strict";
+  if (window.__pplNonTeachingGallery) return;
+  if (typeof galleryGroups !== "function" || typeof gallery !== "function" || typeof filterArtifacts !== "function") {
+    console.error("Pasang Galeri Nonmengajar setelah script utama portofolio.");
+    return;
+  }
+  window.__pplNonTeachingGallery = true;
+  const categories = [
+    { key: "piket", label: "Piket", icon: "◈", ids: [
+      "17-pp5yUHw3V7Rk51THdArjOBXq970OAj", "1RzC1BynkEkYvXyDHUzZKvYkFNJqaf2Jo",
+      "133XWkFYYBc73w2_Z8PC3aXvWRpsmwnAC", "1BNgUr7_P2l7bGUUMlb_tYkRcO0TQbpDr",
+      "1GgD-XCdQQiBtaRdYSu3lYxCq-jsfB4IP", "11GviHrckY-rUWlHJ5qHdq0YGqt96NYij",
+      "1kNpgb1Y9UYJ-ZL5AhxwNtqKIGxmZG-lJ", "14qvXeQvAvW8V_n3_bbb1G2H-QEXpiAhe",
+      "1oQpz_DBQLim2tsYeB5oXBa-mxJcGi-AJ", "1gL-3aVFF5Yt46JrS1jS6Ic_D5X4iSxcY",
+      "19xnWwqVQkYE260KnbpEeJjQW11oFEan7"
+    ] },
+    { key: "tech", label: "Ekskul Tech-ONE", icon: "⌘", ids: [
+      "1UiRk0sZJ6TXJwAHTdhC26Ytv9e7PzeF-", "1i40m-RlSQacdiCIE-_gE0wrf2P1q58QP",
+      "16D8WMxSnCsuN0c_K79Dj5ZKWR3yC9arE", "1NdtoO3Z9cyiKXd5CVYG6X8Aid2HKiJkD",
+      "1rvftNWiQYzqgraXrsbwAJcqgE5sgVtJ-"
+    ] },
+    { key: "pamong", label: "Evaluasi bersama Pamong", icon: "◎", ids: [
+      "19Z4h8vD8TqoLfmprusyS-6WJHwUxsfw9", "182g2oKwDj5lIGEFqBl6F_u1ifeOAPoGE",
+      "1OolntunDYZc-Eh88qa20ioUW9if2XaPe"
+    ] }
+  ];
+  const photos = categories.flatMap(c => c.ids.map((id, i) => Object.freeze({
+    id, category: c.key, label: c.label, number: i + 1,
+    title: c.label + " · Foto " + (i + 1),
+    original: "https://drive.google.com/file/d/" + id + "/view"
+  })));
+  const byId = new Map(photos.map(p => [p.id, p]));
+  const key = "ppl-nonmengajar-favorites-v1";
+  let favorites;
+  try { const saved = JSON.parse(localStorage.getItem(key) || "[]"); favorites = new Set(Array.isArray(saved) ? saved.filter(id => byId.has(id)) : []); }
+  catch { favorites = new Set(); }
+  const state = { category: "all", query: "", favoritesOnly: false, layout: "mosaik", order: photos.map(p => p.id), sequence: [], index: 0, zoom: 1, timer: null, opener: null, photoToken: 0 };
+  const q = (s, root = document) => root.querySelector(s);
+  const qa = (s, root = document) => Array.from(root.querySelectorAll(s));
+  const esc = value => String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+  const thumb = (id, width = 1200) => "https://drive.google.com/thumbnail?id=" + encodeURIComponent(id) + "&sz=w" + width;
+  const alternative = id => "https://lh3.googleusercontent.com/d/" + encodeURIComponent(id);
+  const pad = n => String(n).padStart(2, "0");
+  function selectedPhotos() {
+    const query = state.query.trim().toLocaleLowerCase("id");
+    return state.order.map(id => byId.get(id)).filter(p =>
+      (state.category === "all" || state.category === p.category) &&
+      (!state.favoritesOnly || favorites.has(p.id)) &&
+      (!query || (p.title + " " + p.category + " " + pad(p.number)).toLocaleLowerCase("id").includes(query)));
+  }
+  function categoryMarkup() {
+    return [{ key: "all", label: "Semua", icon: "✦", ids: photos }, ...categories].map(c =>
+      `<button type="button" class="ntg-category" role="tab" id="ntg-tab-${c.key}" aria-selected="${state.category === c.key}" aria-controls="ntg-photo-panel" tabindex="${state.category === c.key ? 0 : -1}" data-ntg-category="${c.key}"><span aria-hidden="true">${c.icon}</span>${esc(c.label)}<small>${c.ids.length}</small></button>`).join("");
+  }
+  function componentMarkup() {
+    return `<div class="ntg" id="ntg-root">
+      <div class="ntg-intro"><div><p class="eyebrow">// Di luar ruang kelas</p><h3>Jejak kegiatan.<br><span>Cerita dalam gambar.</span></h3><p>Dokumentasi piket, pendampingan Ekskul Tech-ONE, dan evaluasi mengajar bersama guru pamong.</p></div><div class="ntg-total"><b>19</b><span>FOTO · 3 KEGIATAN</span></div></div>
+      <div class="ntg-categories" role="tablist" aria-label="Kategori kegiatan nonmengajar">${categoryMarkup()}</div>
+      <div class="ntg-tools"><label class="ntg-search-label"><span class="hide">Cari foto nonmengajar</span><input type="search" id="ntg-search" placeholder="Cari kategori atau nomor foto…" autocomplete="off" value="${esc(state.query)}"></label>
+      <button type="button" class="ntg-tool" data-ntg-action="shuffle">⤨ Acak susunan</button><button type="button" class="ntg-tool" data-ntg-action="layout" aria-pressed="${state.layout === "rapi"}">${state.layout === "rapi" ? "▦ Tampilan rapi" : "◈ Tampilan mosaik"}</button><button type="button" class="ntg-tool" data-ntg-action="favorites" aria-pressed="${state.favoritesOnly}">☆ Favorit (${favorites.size})</button><button type="button" class="ntg-tool" data-ntg-action="reset">↺ Reset</button></div>
+      <div class="ntg-counter"><span id="ntg-count" role="status" aria-live="polite"></span><span>Klik foto untuk menjelajah ↗</span></div>
+      <div id="ntg-photo-panel" role="tabpanel" aria-labelledby="ntg-tab-${state.category}"><div class="ntg-mosaic" id="ntg-mosaic" data-layout="${state.layout}"></div><p class="ntg-empty" id="ntg-empty" hidden>Belum ada foto yang cocok. Ubah pencarian, kategori, atau filter favorit.</p></div>
+      <p class="ntg-help">☆ Simpan pilihan foto di peramban ini. Buka foto untuk zoom, tayangan otomatis, dan navigasi tombol ← →. Susunan mosaik dapat memotong tepi foto; pratinjau menampilkan gambar utuh.</p></div>`;
+  }
+  function photoMarkup(p) {
+    return `<article class="ntg-photo" data-ntg-id="${p.id}"><button type="button" class="ntg-photo-open" data-ntg-open="${p.id}" aria-label="Buka ${esc(p.title)}"><img class="ntg-photo-image" src="${thumb(p.id)}" alt="Dokumentasi ${esc(p.title)}" loading="lazy" decoding="async" referrerpolicy="no-referrer"><span class="ntg-photo-label"><small>DOKUMENTASI / ${pad(p.number)}</small><strong>${esc(p.label)}</strong><em>Jelajahi foto ↗</em></span></button><span class="ntg-photo-index" aria-hidden="true">${pad(p.number)}</span><button type="button" class="ntg-favorite" data-ntg-favorite="${p.id}" aria-pressed="${favorites.has(p.id)}" aria-label="${favorites.has(p.id) ? "Hapus favorit" : "Favoritkan"} ${esc(p.title)}">${favorites.has(p.id) ? "★" : "☆"}</button><a class="ntg-source" href="${p.original}" target="_blank" rel="noopener noreferrer" aria-label="Buka sumber ${esc(p.title)} di Google Drive" title="Buka foto asli di Drive">↗</a></article>`;
+  }
+  function setImageFallback(img, p) {
+    let attempt = 0;
+    img.addEventListener("error", () => {
+      if (attempt++ === 0) { img.src = alternative(p.id); return; }
+      img.hidden = true;
+      const card = img.closest(".ntg-photo");
+      if (card && !q(".ntg-load-message", card)) {
+        card.classList.add("is-unavailable");
+        const message = document.createElement("span"); message.className = "ntg-load-message";
+        message.textContent = "Gambar belum termuat · klik untuk pratinjau Drive"; card.append(message);
+      }
+    });
+    if (img.complete && img.naturalWidth === 0) img.dispatchEvent(new Event("error"));
+  }
+  function renderPhotos() {
+    const root = q("#ntg-root"); if (!root) return;
+    const list = selectedPhotos(), mosaic = q("#ntg-mosaic", root);
+    mosaic.dataset.layout = state.layout;
+    mosaic.innerHTML = list.map(photoMarkup).join("");
+    qa(".ntg-photo", mosaic).forEach(card => setImageFallback(q("img", card), byId.get(card.dataset.ntgId)));
+    q("#ntg-empty", root).hidden = list.length > 0;
+    q("#ntg-count", root).textContent = list.length + " dari 19 foto · " + (state.category === "all" ? "Semua kegiatan" : categories.find(c => c.key === state.category).label);
+    q("[data-ntg-action=favorites]", root).textContent = (state.favoritesOnly ? "★" : "☆") + " Favorit (" + favorites.size + ")";
+    q("[data-ntg-action=favorites]", root).setAttribute("aria-pressed", String(state.favoritesOnly));
+    q("[data-ntg-action=layout]", root).setAttribute("aria-pressed", String(state.layout === "rapi"));
+    q("[data-ntg-action=layout]", root).textContent = state.layout === "rapi" ? "▦ Tampilan rapi" : "◈ Tampilan mosaik";
+    qa("[data-ntg-category]", root).forEach(b => { const active = b.dataset.ntgCategory === state.category; b.setAttribute("aria-selected", String(active)); b.tabIndex = active ? 0 : -1; });
+    q("#ntg-photo-panel", root).setAttribute("aria-labelledby", "ntg-tab-" + state.category);
+    root.dataset.ready = "true";
+  }
+  function syncFavorite(id) {
+    favorites.has(id) ? favorites.delete(id) : favorites.add(id);
+    try { localStorage.setItem(key, JSON.stringify([...favorites])); }
+    catch { if (typeof notify === "function") notify("Favorit aktif selama sesi ini; penyimpanan peramban tidak tersedia."); }
+    const openId = q(".ntg-lightbox[open]") ? state.sequence[state.index] : null;
+    renderPhotos();
+    const current = q("[data-ntg-action=save-current]", dialog);
+    if (openId && current) { current.textContent = favorites.has(openId) ? "★ Favorit" : "☆ Favorit"; current.setAttribute("aria-pressed", String(favorites.has(openId))); }
+    if (!dialog.open) q('[data-ntg-favorite="' + id + '"]')?.focus({ preventScroll: true });
+  }
+  const dialog = document.createElement("dialog");
+  dialog.className = "ntg-lightbox"; dialog.id = "ntg-lightbox"; dialog.setAttribute("aria-labelledby", "ntg-lightbox-title");
+  dialog.innerHTML = `<header class="ntg-lightbox-header"><div class="ntg-lightbox-heading"><h2 id="ntg-lightbox-title">Dokumentasi nonmengajar</h2><small id="ntg-lightbox-count" role="status" aria-live="polite"></small></div><button type="button" class="ntg-tool" data-ntg-action="close" aria-label="Tutup galeri">✕</button><div class="ntg-lightbox-actions"><button type="button" class="ntg-tool" data-ntg-action="zoom-out" aria-label="Perkecil foto">−</button><button type="button" class="ntg-tool" data-ntg-action="zoom-reset" title="Kembalikan ukuran foto">100%</button><button type="button" class="ntg-tool" data-ntg-action="zoom-in" aria-label="Perbesar foto">+</button><button type="button" class="ntg-tool" data-ntg-action="slideshow" aria-pressed="false">▶ Tayangan</button><button type="button" class="ntg-tool" data-ntg-action="save-current" aria-pressed="false">☆ Favorit</button><button type="button" class="ntg-tool" data-ntg-action="fullscreen" aria-label="Layar penuh">⛶</button><a class="ntg-tool" id="ntg-original" target="_blank" rel="noopener noreferrer">Buka Drive ↗</a></div></header><div class="ntg-stage-wrap"><div class="ntg-stage" id="ntg-stage"></div><button type="button" class="ntg-nav" data-ntg-action="prev" aria-label="Foto sebelumnya">‹</button><button type="button" class="ntg-nav" data-ntg-action="next" aria-label="Foto berikutnya">›</button></div><div class="ntg-lightbox-caption"><span id="ntg-caption"></span><span>← → Navigasi · + − Zoom · Esc Tutup</span></div><div class="ntg-filmstrip" id="ntg-filmstrip" aria-label="Pilih foto dalam hasil filter"></div>`;
+  document.body.append(dialog);
+  function pause() {
+    clearInterval(state.timer); state.timer = null;
+    const button = q("[data-ntg-action=slideshow]", dialog); button.textContent = "▶ Tayangan"; button.setAttribute("aria-pressed", "false");
+  }
+  function setZoom(value) {
+    state.zoom = Math.max(1, Math.min(3, value)); dialog.style.setProperty("--ntg-zoom", state.zoom);
+    const stage = q("#ntg-stage", dialog); stage.dataset.zoomed = String(state.zoom > 1);
+    q("[data-ntg-action=zoom-reset]", dialog).textContent = Math.round(state.zoom * 100) + "%";
+    if (state.zoom === 1) stage.scrollTo(0, 0);
+  }
+  function updatePhoto() {
+    const p = byId.get(state.sequence[state.index]); if (!p) return;
+    const token = ++state.photoToken;
+    setZoom(1);
+    q("#ntg-lightbox-title", dialog).textContent = p.label;
+    q("#ntg-lightbox-count", dialog).textContent = "Foto " + (state.index + 1) + " / " + state.sequence.length + " dalam pilihan ini";
+    q("#ntg-caption", dialog).textContent = p.title;
+    q("#ntg-original", dialog).href = p.original;
+    q("[data-ntg-action=save-current]", dialog).textContent = favorites.has(p.id) ? "★ Favorit" : "☆ Favorit";
+    q("[data-ntg-action=save-current]", dialog).setAttribute("aria-pressed", String(favorites.has(p.id)));
+    ["prev", "next", "slideshow"].forEach(action => { q('[data-ntg-action="' + action + '"]', dialog).disabled = state.sequence.length < 2; });
+    ["zoom-in", "zoom-out", "zoom-reset"].forEach(action => { q('[data-ntg-action="' + action + '"]', dialog).disabled = false; });
+    const stage = q("#ntg-stage", dialog); stage.replaceChildren();
+    const status = document.createElement("div"); status.className = "ntg-stage-status"; status.textContent = "Memuat foto…";
+    const img = document.createElement("img"); img.className = "ntg-full-image"; img.alt = "Dokumentasi " + p.title; img.referrerPolicy = "no-referrer";
+    let attempt = 0;
+    img.onload = () => { if (token === state.photoToken) status.remove(); };
+    img.onerror = () => {
+      if (token !== state.photoToken) return;
+      if (attempt++ === 0) { img.src = alternative(p.id); return; }
+      pause(); img.remove(); status.textContent = "Pratinjau Drive · jika tidak tampil, pilih Buka Drive ↗";
+      const iframe = document.createElement("iframe"); iframe.className = "ntg-fallback-frame"; iframe.title = "Pratinjau Drive " + p.title; iframe.referrerPolicy = "no-referrer";
+      iframe.src = "https://drive.google.com/file/d/" + p.id + "/preview"; iframe.allowFullscreen = true;
+      iframe.onload = () => { if (token === state.photoToken) status.remove(); };
+      stage.append(iframe);
+      ["zoom-in", "zoom-out", "zoom-reset"].forEach(action => { q('[data-ntg-action="' + action + '"]', dialog).disabled = true; });
+      q("#ntg-caption", dialog).textContent = p.title + " · Pratinjau alternatif Drive; gunakan Buka Drive jika diminta akses.";
+    };
+    img.src = thumb(p.id, 2400); stage.append(img, status);
+    qa(".ntg-film-item", dialog).forEach(b => b.setAttribute("aria-current", String(b.dataset.ntgJump === p.id)));
+    const strip = q("#ntg-filmstrip", dialog), active = q('[data-ntg-jump="' + p.id + '"]', strip);
+    if (active) strip.scrollTo({ left: Math.max(0, active.offsetLeft - strip.offsetLeft - strip.clientWidth / 2 + active.clientWidth / 2), behavior: "instant" });
+  }
+  function openPhoto(id, opener) {
+    state.sequence = selectedPhotos().map(p => p.id);
+    state.index = state.sequence.indexOf(id); if (state.index < 0) return;
+    pause(); state.opener = opener;
+    q("#ntg-filmstrip", dialog).innerHTML = state.sequence.map(photoId => {
+      const p = byId.get(photoId);
+      return `<button type="button" class="ntg-film-item" data-ntg-jump="${p.id}" aria-label="Buka ${esc(p.title)}" aria-current="${p.id === id}"><img src="${thumb(p.id, 160)}" alt="" loading="lazy" referrerpolicy="no-referrer"><span>${pad(p.number)}</span></button>`;
+    }).join("");
+    if (!dialog.open) dialog.showModal();
+    updatePhoto();
+    q("[data-ntg-action=close]", dialog).focus();
+  }
+  function move(delta) { state.index = (state.index + delta + state.sequence.length) % state.sequence.length; updatePhoto(); }
+  function close() {
+    pause(); ++state.photoToken;
+    if (document.fullscreenElement === dialog) document.exitFullscreen().catch(() => {});
+    if (dialog.open) dialog.close();
+  }
+  dialog.addEventListener("cancel", event => { event.preventDefault(); close(); });
+  dialog.addEventListener("close", () => {
+    pause(); ++state.photoToken; q("#ntg-stage", dialog).replaceChildren();
+    const old = state.opener;
+    if (old?.isConnected) old.focus({ preventScroll: true });
+    else q(".ntg-category[aria-selected=true]")?.focus({ preventScroll: true });
+  });
+  dialog.addEventListener("click", event => { if (event.target !== dialog) return; const r = dialog.getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) close(); });
+  q("#ntg-stage", dialog).addEventListener("dblclick", event => { if (event.target.matches("img")) { pause(); setZoom(state.zoom > 1 ? 1 : 2); } });
+  document.addEventListener("visibilitychange", () => { if (document.hidden) pause(); });
+  addEventListener("hashchange", () => { if (dialog.open) close(); });
+  document.addEventListener("click", event => {
+    const target = event.target.closest("button[data-ntg-action],button[data-ntg-category],button[data-ntg-open],button[data-ntg-favorite],button[data-ntg-jump]");
+    if (!target) return;
+    if (target.dataset.ntgOpen) { openPhoto(target.dataset.ntgOpen, target); return; }
+    if (target.dataset.ntgFavorite) { syncFavorite(target.dataset.ntgFavorite); return; }
+    if (target.dataset.ntgJump) { pause(); state.index = state.sequence.indexOf(target.dataset.ntgJump); updatePhoto(); return; }
+    if (target.dataset.ntgCategory) { state.category = target.dataset.ntgCategory; renderPhotos(); return; }
+    const action = target.dataset.ntgAction;
+    if (action === "shuffle") { for (let i = state.order.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [state.order[i], state.order[j]] = [state.order[j], state.order[i]]; } renderPhotos(); }
+    if (action === "layout") { state.layout = state.layout === "mosaik" ? "rapi" : "mosaik"; renderPhotos(); }
+    if (action === "favorites") { state.favoritesOnly = !state.favoritesOnly; renderPhotos(); }
+    if (action === "reset") { Object.assign(state, { category: "all", query: "", favoritesOnly: false, layout: "mosaik", order: photos.map(p => p.id) }); q("#ntg-search").value = ""; renderPhotos(); }
+    if (action === "close") close();
+    if (action === "next" || action === "prev") { pause(); move(action === "next" ? 1 : -1); }
+    if (action === "zoom-in" || action === "zoom-out" || action === "zoom-reset") { pause(); setZoom(action === "zoom-reset" ? 1 : state.zoom + (action === "zoom-in" ? .5 : -.5)); }
+    if (action === "save-current") syncFavorite(state.sequence[state.index]);
+    if (action === "slideshow") {
+      if (state.timer) pause();
+      else if (state.sequence.length > 1) { setZoom(1); target.textContent = "Ⅱ Jeda"; target.setAttribute("aria-pressed", "true"); state.timer = setInterval(() => move(1), 5000); }
+    }
+    if (action === "fullscreen") {
+      if (document.fullscreenElement === dialog) document.exitFullscreen().catch(() => {});
+      else if (dialog.requestFullscreen) dialog.requestFullscreen().catch(() => { if (typeof notify === "function") notify("Layar penuh tidak tersedia pada peramban ini."); });
+      else if (typeof notify === "function") notify("Layar penuh tidak tersedia pada peramban ini.");
+    }
+  });
+  document.addEventListener("input", event => { if (event.target.id === "ntg-search") { state.query = event.target.value; renderPhotos(); } });
+  document.addEventListener("keydown", event => {
+    const category = event.target.closest("[data-ntg-category]");
+    if (category && ["ArrowRight", "ArrowLeft", "Home", "End"].includes(event.key)) {
+      event.preventDefault(); event.stopImmediatePropagation();
+      const tabs = qa("[data-ntg-category]"), i = tabs.indexOf(category);
+      const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (i + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+      tabs[next].click(); tabs[next].focus(); return;
+    }
+    if (!dialog.open || /INPUT|TEXTAREA|SELECT/.test(event.target.tagName) || event.ctrlKey || event.metaKey || event.altKey) return;
+    if (!["ArrowRight", "ArrowLeft", "Home", "End", "+", "=", "-", "0", "Escape"].includes(event.key)) return;
+    event.preventDefault(); event.stopImmediatePropagation(); pause();
+    if (event.key === "Escape") close();
+    else if (event.key === "ArrowRight" || event.key === "ArrowLeft") move(event.key === "ArrowRight" ? 1 : -1);
+    else if (event.key === "Home" || event.key === "End") { state.index = event.key === "Home" ? 0 : state.sequence.length - 1; updatePhoto(); }
+    else if (!q(".ntg-fallback-frame", dialog)) setZoom(event.key === "0" ? 1 : state.zoom + (event.key === "-" ? -.5 : .5));
+  }, true);
+  const originalGroups = galleryGroups;
+  galleryGroups = function(page) {
+    const groups = originalGroups(page); if (page !== "topik3") return groups;
+    const result = groups.map(group => group.key === "documentation" ? { ...group, types: group.types.filter(type => type !== "nonTeaching") } : group);
+    if (!result.some(group => group.key === "nonTeaching")) result.splice(Math.max(0, result.findIndex(group => group.key === "documentation") + 1), 0, { key: "nonTeaching", label: "🤝 Nonmengajar", types: [] });
+    return result;
+  };
+  const originalGallery = gallery;
+  gallery = function(page) {
+    const html = originalGallery(page); if (page !== "topik3") return html;
+    const template = document.createElement("template"); template.innerHTML = html;
+    const panel = q("#gallery-tabs-panel-nonTeaching", template.content); if (panel) panel.innerHTML = componentMarkup();
+    return template.innerHTML;
+  };
+  const originalFilter = filterArtifacts;
+  filterArtifacts = function() {
+    const panel = q("#gallery-tabs-panel-nonTeaching"), active = panel && !panel.hidden;
+    const toolbar = q("#artifact-search")?.closest(".toolbar"), count = q("#artifact-count");
+    if (toolbar) toolbar.classList.toggle("hide", Boolean(active));
+    if (count) count.classList.toggle("hide", Boolean(active));
+    if (active) { q("#no-artifacts")?.classList.add("hide"); if (q("#ntg-root")?.dataset.ready !== "true") renderPhotos(); return; }
+    return originalFilter.apply(this, arguments);
+  };
+  // Pasang juga pada halaman yang sudah dirender oleh script utama.
+  if (document.body.dataset.page === "topik3" && q("#gallery-tabs") && !q("#gallery-tabs-tab-nonTeaching")) {
+    const old = q("#gallery-tabs-tab-documentation");
+    const button = document.createElement("button"); button.type = "button"; button.className = "tab"; button.id = "gallery-tabs-tab-nonTeaching"; button.setAttribute("role", "tab"); button.setAttribute("aria-selected", "false"); button.setAttribute("aria-controls", "gallery-tabs-panel-nonTeaching"); button.tabIndex = -1; button.dataset.tabSet = "gallery-tabs"; button.dataset.tabKey = "nonTeaching"; button.textContent = "🤝 Nonmengajar";
+    if (old) old.after(button); else q("#gallery-tabs").append(button);
+    const panel = document.createElement("div"); panel.className = "tab-panel"; panel.id = "gallery-tabs-panel-nonTeaching"; panel.hidden = true; panel.setAttribute("role", "tabpanel"); panel.setAttribute("aria-labelledby", button.id); panel.innerHTML = componentMarkup(); q("#artifact-panels").append(panel);
+    qa('#gallery-tabs-panel-documentation [data-type="nonTeaching"]').forEach(card => card.remove());
+    filterArtifacts();
+  }
+})();
+</script>
+
   </body>
 </html>
